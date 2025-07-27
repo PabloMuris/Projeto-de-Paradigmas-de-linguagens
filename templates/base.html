@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Minha Aplicação{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+  <div class="container">
+    {% block content %}
+    <!-- Conteúdo específico será inserido aqui -->
+    {% endblock %}
+  </div>
+  <footer>
+    <p>
+        &copy; 2023 Minha Aplicação. Todos os direitos reservados.
+    </p>
+  </footer>
+</body>
+</html>
+

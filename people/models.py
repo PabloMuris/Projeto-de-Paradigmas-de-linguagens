@@ -1,13 +1,14 @@
 from django.db import models
+from core.models import BaseModelWithSoftDelete
 
-class Curso(models.Model):
+
+class Curso(BaseModelWithSoftDelete):
     nome = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nome
 
-# Create your models here.
-class Aluno(models.Model):
+class Aluno(BaseModelWithSoftDelete):
     nome = models.CharField(max_length=100)
     idade = models.IntegerField()
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE,null=True)

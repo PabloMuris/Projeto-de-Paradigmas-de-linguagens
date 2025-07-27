@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Excluir Curso{% endblock %}
+
+{% block content %}
+<h1>Excluir Curso</h1>
+<p>Tem certeza que deseja excluir o curso "{{ object.nome }}"?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmar Exclusão</button>
+  <a href="{% url 'curso-list' %}">Cancelar</a>
+</form>
+{% endblock %}

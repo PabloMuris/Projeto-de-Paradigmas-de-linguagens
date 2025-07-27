@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Detalhes do Aluno{% endblock %}
+
+{% block content %}
+<h1>Aluno: {{ object.nome }}</h1>
+<p>Idade: {{ object.idade }}</p>
+<p>Curso: {% if object.curso %}{{ object.curso.nome }}{% else %}Nenhum curso vinculado{% endif %}</p>
+
+<p><a href="{% url 'aluno-update' object.pk %}">Editar</a> | <a href="{% url 'aluno-delete' object.pk %}">Excluir</a></p>
+<p><a href="{% url 'aluno-list' %}">Voltar para lista</a></p>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Detalhes do Curso{% endblock %}
+
+{% block content %}
+<h1>Curso: {{ object.nome }}</h1>
+
+<p><a href="{% url 'curso-update' object.pk %}">Editar</a> | <a href="{% url 'curso-delete' object.pk %}">Excluir</a></p>
+<p><a href="{% url 'curso-list' %}">Voltar para lista</a></p>
+{% endblock %}
