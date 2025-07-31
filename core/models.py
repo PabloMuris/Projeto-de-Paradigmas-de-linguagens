@@ -46,6 +46,7 @@ class CreationTimestampedModel(models.Model):
         _("Created at"),
         auto_now_add=True,
         editable=False,
+        null=True
     )
     created_by = models.ForeignKey(
         User,

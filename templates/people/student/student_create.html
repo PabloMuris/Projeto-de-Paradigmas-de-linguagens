@@ -1,8 +1,7 @@
 {% extends "base.html" %}
-{% load static%}
-{% block css%} 
-<link rel="stylesheet" href="{% static "css/course_create.css" %}">
-{% endblock %}
+{% {% load static %}%}
+{% block title %}Lista de Alunos{% endblock %}
+{% block css%} {% static "css/course_create.css" %}{% endblock %}
 {% block content %}
 <form action="/alunos/create/" method="POST">
   <label for="nome">Nome do Aluno:</label>
@@ -22,5 +21,4 @@
   </select>
 
   <button type="submit">Salvar Aluno</button>
-</form>
 {% endblock %}

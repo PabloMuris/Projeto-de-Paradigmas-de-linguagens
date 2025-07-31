@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView,TemplateView
 from .models import Curso, Aluno
 
 # Views para Curso
@@ -59,3 +59,7 @@ class AlunoDeleteView(DeleteView):
     model = Aluno
     template_name = 'people/student/student_confirm_delete.html'
     success_url = reverse_lazy('aluno-list')
+
+
+class IndexView(TemplateView):
+    template_name = "index.html"

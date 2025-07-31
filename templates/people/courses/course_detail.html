@@ -1,9 +1,40 @@
 {% extends "base.html" %}
 {% block title %}Detalhes do Curso{% endblock %}
-
+{% block css %} 
+<style>
+    #course-container {
+        background-color: white;
+        color: #633E84;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    
+    #course-container #course-actions {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+    }
+    #course-container #course-actions p{
+        display: flex;
+        background-color: #633E84;
+        color: white;
+        border-radius: 10px;
+        padding: 10px;
+        text-decoration: none;
+    }
+    #course-container a{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
 {% block content %}
+<div id="course-container">
 <h1>Curso: {{ object.nome }}</h1>
-
-<p><a href="{% url 'curso-update' object.pk %}">Editar</a> | <a href="{% url 'curso-delete' object.pk %}">Excluir</a></p>
-<p><a href="{% url 'curso-list' %}">Voltar para lista</a></p>
+<div id="course-actions">
+    <p><a href="{% url 'curso-update' object.pk %}">Editar</a> </p>
+    <p><a href="{% url 'curso-delete' object.pk %}">Excluir</a></p>
+    <p><a href="{% url 'curso-list' %}">Voltar para lista</a></p>
+</div>
+</div>
 {% endblock %}

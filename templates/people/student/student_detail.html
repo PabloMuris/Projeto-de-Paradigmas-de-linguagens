@@ -1,11 +1,20 @@
 {% extends "base.html" %}
+{% load static%}
 {% block title %}Detalhes do Aluno{% endblock %}
-
+{% block css%} 
+<link rel="stylesheet" href="{% static "css/student_detail.css" %}">
+{% endblock %}
 {% block content %}
+<div id="student-detail">
 <h1>Aluno: {{ object.nome }}</h1>
 <p>Idade: {{ object.idade }}</p>
 <p>Curso: {% if object.curso %}{{ object.curso.nome }}{% else %}Nenhum curso vinculado{% endif %}</p>
 
-<p><a href="{% url 'aluno-update' object.pk %}">Editar</a> | <a href="{% url 'aluno-delete' object.pk %}">Excluir</a></p>
+<div id="student-actions">
+    <p><a href="{% url 'aluno-update' object.pk %}">Editar</a></p>
+<p><a href="{% url 'aluno-delete' object.pk %}">Excluir</a></p>
 <p><a href="{% url 'aluno-list' %}">Voltar para lista</a></p>
+</div>
+
+</div>
 {% endblock %}

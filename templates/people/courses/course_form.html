@@ -1,8 +1,53 @@
 {% extends "base.html" %}
 {% block title %}{% if object %}Editar Curso{% else %}Novo Curso{% endif %}{% endblock %}
+{% block css %} 
+<style>
 
+  #form-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 16px;
+    align-items: center;
+    padding: 10px;
+  }
+
+  form button {
+    height:30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #633E84;
+    color: white;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  form input{
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100%;
+    padding-left: 10px;
+  }
+  #form-container #return-button {
+    border-radius: 5px;
+    align-self: start;
+  }
+  #return-button a {
+    color: #633E84;
+
+  }
+</style>
+{% endblock %}
 {% block content %}
-<h1>{% if object %}Editar Curso{% else %}Novo Curso{% endif %}</h1>
+<div id="form-container" >
+  <div id="options-new-course" style="display: flex; flex-direction: column-reverse; align-items: start; width: 80%;">
+    <h1>{% if object %}Editar Curso{% else %}Novo Curso{% endif %}</h1>
+    <p id="return-button"><a href="{% url 'curso-list' %}">Cancelar e voltar</a></p>
+</div>
 
 <form method="post">
   {% csrf_token %}
@@ -10,5 +55,5 @@
   <button type="submit">Salvar</button>
 </form>
 
-<p><a href="{% url 'curso-list' %}">Cancelar e voltar</a></p>
+
 {% endblock %}

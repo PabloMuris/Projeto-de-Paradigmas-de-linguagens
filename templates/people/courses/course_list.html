@@ -1,8 +1,25 @@
 {% extends "base.html" %}
 {% block title %}Lista de Cursos{% endblock %}
+{%block css%%}
+<style>
+  #course-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: fit-content;
+  }
 
+  #course-list-container h1 {
+    margin-bottom: 16px;
+  }
+
+
+</style>
+{% endblock%}
 {% block content %}
-<h1>Cursos</h1>
+
+<div id="course-list-container">
+  <h1>Cursos</h1>
 <a href="{% url 'curso-create' %}">Novo Curso</a>
 <ul>
   {% for curso in object_list %}
@@ -16,4 +33,5 @@
   {% endfor %}
 </ul>
 <a href="{% url 'aluno-list' %}">Ir para Alunos</a>
+</div>
 {% endblock %}

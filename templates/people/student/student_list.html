@@ -1,19 +1,29 @@
 {% extends "base.html" %}
-{% block title %}Lista de Alunos{% endblock %}
-
-{% block content %}
-<h1>Alunos</h1>
-<a href="{% url 'aluno-create' %}">Novo Aluno</a>
-<ul>
-  {% for aluno in object_list %}
-  <li>
-    <a href="{% url 'aluno-detail' aluno.pk %}">{{ aluno.nome }}</a> |
-    <a href="{% url 'aluno-update' aluno.pk %}">Editar</a> |
-    <a href="{% url 'aluno-delete' aluno.pk %}">Excluir</a>
-  </li>
-  {% empty %}
-  <li>Não há alunos cadastrados.</li>
-  {% endfor %}
-</ul>
-<a href="{% url 'curso-list' %}">Ir para Cursos</a>
+{% load static %}
+{% block css%} 
+<link rel="stylesheet" href="{% static "css/course_create.css" %}">
+{% endblock %}
+{% block content%}
+<table>
+  <tr>
+    <th>Aluno</th>
+    <th>Curso</th>
+  </tr>
+  <tr>
+    {% for aluno in aluno_list %}
+    <td><a href="{% url 'aluno-detail' aluno.id%}"> {{ aluno.nome }}</a></td>
+    {% empty %}
+     <td> Nenhum Aluno Encontrado</td>
+    {% endfor %}
+    {% for aluno in aluno_list %}
+    <td><a href="{% url 'curso-detail' aluno.curso.id%}"> {{ aluno.curso.nome }}</a></td>
+    {% empty %}
+     <td> Nenhum Aluno Encontrado</td>
+    {% endfor %}
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+  </tr>
+         </table> 
 {% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css%}
+<style>
+    #background-container {
+        margin-top: 8px;
+        width: 90%;
+        background-image: url("{% static 'svg/goku_background.svg' %}");
+        min-height: 700px;
+        height: auto;
+        background-repeat: no-repeat;
+        background-color: white;
+        background-size: 385px 508px;
+        background-position: center;
+        
+    }
+</style>
+{%endblock%}
+{% block content%}
+<div id="background-container">
+    
+</div>
+{%endblock%}

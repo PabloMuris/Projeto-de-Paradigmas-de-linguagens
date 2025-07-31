@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     CursoListView, CursoDetailView, CursoCreateView, CursoUpdateView, CursoDeleteView,
-    AlunoListView, AlunoDetailView, AlunoCreateView, AlunoUpdateView, AlunoDeleteView
+    AlunoListView, AlunoDetailView, AlunoCreateView, AlunoUpdateView, AlunoDeleteView,IndexView
 )
 
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
     path('alunos/<int:pk>/', AlunoDetailView.as_view(), name='aluno-detail'),
     path('alunos/<int:pk>/editar/', AlunoUpdateView.as_view(), name='aluno-update'),
     path('alunos/<int:pk>/excluir/', AlunoDeleteView.as_view(), name='aluno-delete'),
+    path('',IndexView.as_view(),name='index')
 ]
