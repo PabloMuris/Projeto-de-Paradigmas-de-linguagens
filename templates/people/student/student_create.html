@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% {% load static %}%}
-{% block title %}Lista de Alunos{% endblock %}
+{% block title %}{{title}}{% endblock %}
 {% block css%} {% static "css/course_create.css" %}{% endblock %}
+{% block style%}
+<style>
+  form input{
+    width: 100% !important;
+  }
+</style>
+{% endblock %}
 {% block content %}
 <form action="/alunos/create/" method="POST">
   <label for="nome">Nome do Aluno:</label>

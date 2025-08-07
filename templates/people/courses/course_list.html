@@ -1,37 +1,111 @@
 {% extends "base.html" %}
-{% block title %}Lista de Cursos{% endblock %}
-{%block css%%}
+{% block title %}{{ title }}{% endblock %}
+
+{% block css %}
 <style>
+  :root {
+    --cor-fundo: #633E84;
+    --cor-destaque: #2563eb;
+    --cor-hover: #1d4ed8;
+    --cor-texto: #1f2937;
+    --espacamento: 1rem;
+    --borda: 6px;
+  }
+
   #course-list-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--espacamento);
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: fit-content;
+    gap: var(--espacamento);
+    background-color: white;
+    border-radius: var(--borda);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
 
   #course-list-container h1 {
-    margin-bottom: 16px;
+    font-size: 1.8rem;
+    color: var(--cor-texto);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--cor-destaque);
+    padding-bottom: 0.25rem;
   }
 
+  #course-list-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  #course-list-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #f2f2f2;
+    border-radius: var(--borda);
+    transition: background 0.2s;
+  }
+
+  #course-list-container li:hover {
+    background-color: #e2e8f0;
+  }
+
+  #course-list-container li a {
+    margin-right: 8px;
+    text-decoration: none;
+    color: var(--cor-destaque);
+    font-weight: 500;
+  }
+
+  #course-list-container li a:hover {
+    color: var(--cor-hover);
+  }
+
+  .btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--cor-destaque);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--borda);
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+    transition: background-color 0.2s;
+  }
+
+  .btn-link:hover {
+    background-color: var(--cor-hover);
+  }
 
 </style>
-{% endblock%}
-{% block content %}
+{% endblock %}
 
+{% block content %}
 <div id="course-list-container">
   <h1>Cursos</h1>
-<a href="{% url 'curso-create' %}">Novo Curso</a>
-<ul>
-  {% for curso in object_list %}
-  <li>
-    <a href="{% url 'curso-detail' curso.pk %}">{{ curso.nome }}</a> |
-    <a href="{% url 'curso-update' curso.pk %}">Editar</a> |
-    <a href="{% url 'curso-delete' curso.pk %}">Excluir</a>
-  </li>
-  {% empty %}
-  <li>Não há cursos cadastrados.</li>
-  {% endfor %}
-</ul>
-<a href="{% url 'aluno-list' %}">Ir para Alunos</a>
+  <a href="{% url 'curso-create' %}" class="btn-link">+ Novo Curso</a>
+
+  <ul>
+    {% for curso in object_list %}
+    <li>
+      <div>{{ curso.nome }}</div>
+      <div>
+        <a href="{% url 'curso-detail' curso.pk %}"> Ver</a>
+        <a href="{% url 'curso-update' curso.pk %}">Editar</a>
+        <a href="{% url 'curso-delete' curso.pk %}">Excluir</a>
+      </div>
+    </li>
+    {% empty %}
+    <li>Não há cursos cadastrados.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'aluno-list' %}" class="btn-link">Ir para Alunos</a>
 </div>
 {% endblock %}

@@ -3,27 +3,30 @@
 {% block css%} 
 <link rel="stylesheet" href="{% static "css/course_create.css" %}">
 {% endblock %}
+{% block title %}{{title}}{% endblock %}
 {% block content%}
+<div id="student-content">
+  <div id="button-create-student">
+  <a href="{% url 'aluno-create' %}" style="background-color: #633E84; border-radius: 10px;">
+    <p>Novo Aluno</p>
+  </a>
+</div>
 <table>
   <tr>
     <th>Aluno</th>
     <th>Curso</th>
   </tr>
+  {% for aluno in aluno_list %}
   <tr>
-    {% for aluno in aluno_list %}
-    <td><a href="{% url 'aluno-detail' aluno.id%}"> {{ aluno.nome }}</a></td>
-    {% empty %}
-     <td> Nenhum Aluno Encontrado</td>
-    {% endfor %}
-    {% for aluno in aluno_list %}
-    <td><a href="{% url 'curso-detail' aluno.curso.id%}"> {{ aluno.curso.nome }}</a></td>
-    {% empty %}
-     <td> Nenhum Aluno Encontrado</td>
-    {% endfor %}
+    <td><a href="{% url 'aluno-detail' aluno.id %}">{{ aluno.nome }}</a></td>
+    <td><a href="{% url 'curso-detail' aluno.curso.id %}">{{ aluno.curso.nome }}</a></td>
   </tr>
+  {% empty %}
   <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
+    <td colspan="2">Nenhum Aluno Encontrado</td>
   </tr>
-         </table> 
+  {% endfor %}
+</table>
+
+</div>
 {% endblock %}

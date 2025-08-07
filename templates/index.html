@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}{{title}}{% endblock title %}
 {% block css%}
 <style>
     #background-container {
         margin-top: 8px;
-        width: 90%;
+        width: 100%;
         background-image: url("{% static 'svg/goku_background.svg' %}");
         min-height: 700px;
         height: auto;

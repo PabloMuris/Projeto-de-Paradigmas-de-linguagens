@@ -15,3 +15,6 @@ class Aluno(BaseModelWithSoftDelete):
 
     def apresentar(self):
         return f'olá,meu nome é {self.nome} e tenho {self.idade} anos'
+    
+    def __str__(self):
+        return self.nome

@@ -3,24 +3,19 @@
 {% block css%} 
 <link rel="stylesheet" href="{% static "css/course_create.css" %}">
 {% endblock %}
+{% block style%}
+<style>
+  form input{
+    width: 100% !important;
+  }
+</style>
+{% endblock %}
+
+
 {% block content %}
-<form action="/alunos/create/" method="POST">
-  <label for="nome">Nome do Aluno:</label>
-  <input type="text" id="nome" name="nome" maxlength="100" required>
-
-  <label for="idade">Idade:</label>
-  <input type="number" id="idade" name="idade" min="0" required>
-
-  <label for="curso">Curso:</label>
-  <select id="curso" name="curso">
-    <!-- Exemplo de opções preenchidas manualmente.
-         Em Django você pode preencher dinamicamente com um template tag. -->
-    <option value="">Selecione um curso</option>
-    <option value="1">Matemática</option>
-    <option value="2">História</option>
-    <option value="3">Engenharia</option>
-  </select>
-
-  <button type="submit">Salvar Aluno</button>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Salvar</button>
 </form>
 {% endblock %}
